@@ -11,7 +11,6 @@ require_once('class_db_maria.php');
 $db = new DB;
 
 $result = select_list($db,$arr_input);
-//var_dump($result);
 
 if(is_array($result) == true)
 {
