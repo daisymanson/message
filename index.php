@@ -22,31 +22,36 @@ $db = new DB;
 
 $result = select_list($db,$arr_input);
 
-echo "留言板";
-echo "<table>";
-echo "<tr>";
-echo "<th>No</th>";
-echo "<th>ID</th>";
-echo "<th>Content</th>";
-echo "<th>Date</th>";
-echo "<th colspan='2'>btn</th>";
-echo "</tr>";
+?>
+留言板
+<table>
+  <tr>
+    <th>No</th>
+    <th>ID</th>
+    <th>Content</th>
+    <th>Date</th>
+    <th>update/delete</th>
+  </tr>
 
-if(is_array($result) == true)
-{
-  foreach ($result as $key => $value1)
+  <?php
+  if(is_array($result) == true)
   {
-    echo "<tr>";
-    echo "<td>".($key + 1)."</td>";
-    echo "<td>".$value1['guest_id']."</td> ";
-    echo "<td>".$value1['content']."</td> ";
-    echo "<td>".$value1['date']."</td> ";
-    echo "<td>"."update"."</td>";
-    echo "<td>"."delete"."</td>";
-    echo "</tr>";
-    echo "</table>";
+    foreach ($result as $key => $value1)
+    {
+      ?>
+      <tr>
+        <td><?php echo ($key + 1);?></td>
+        <td><?php echo $value1['guest_id'];?></td>
+        <td><?php echo $value1['content'];?></td>
+        <td><?php echo $value1['date'];?></td>
+        <td><input value="修改" type="button" onClick="" /><input value="刪除" type="button" onClick="" /></td>
+      </tr>
+      <?php
+    }
   }
-}
+  ?>
+</table>
+<?php
 
 unset($arr_input);
 unset($sql_input);
