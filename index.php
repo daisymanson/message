@@ -20,7 +20,9 @@
 require_once('class_db_maria.php');
 $db = new DB;
 
-$result = select_list($db,$arr_input);
+$result = select_list($db, $arr_input);
+
+unset($arr_input);
 
 ?>
 留言板
@@ -44,18 +46,18 @@ $result = select_list($db,$arr_input);
         <td><?php echo $value1['guest_id'];?></td>
         <td><?php echo $value1['content'];?></td>
         <td><?php echo $value1['date'];?></td>
-        <td><input value="修改" type="button" onClick="" /><input value="刪除" type="button" onClick="" /></td>
+        <td>
+          <button onclick="update_list()">修改</button>
+          <button onclick="delete_list()">刪除</button>
+        </td>
       </tr>
       <?php
     }
   }
   ?>
 </table>
+
 <?php
-
-unset($arr_input);
-unset($sql_input);
-
 function select_list($db, $arr_input)
 {
   $result = $db->table('message')
@@ -64,4 +66,17 @@ function select_list($db, $arr_input)
                ->get();
   return $result;
 }
+
+unset($arr_input);
 ?>
+<script>
+function update_list()
+{
+  window.parent.location.href='update.php';
+}
+
+function delete_list()
+{
+  window.parent.location.href='delete.php';
+}
+</script>
