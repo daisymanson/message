@@ -11,7 +11,7 @@ $sql_input['is_enable'] = 0;
 
 $res = add_list($db, $sql_input);
 
-if($res != '')
+if($res > 0)
 {
   redirect_js_href('success', 'index.php');
 }
