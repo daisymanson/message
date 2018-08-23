@@ -2,12 +2,8 @@
 require_once('class_db_maria.php');
 $db = new DB;
 
-//==== 接收參數 op ====
-
 $arr_input['guest_id'] = $_POST['guest_id'];
 $arr_input['content'] = $_POST['content'];
-
-//==== 接收參數 op ====
 
 $sql_input['guest_id'] = $arr_input['guest_id'];
 $sql_input['content'] = $arr_input['content'];
@@ -21,10 +17,8 @@ if($res != '')
 }
 else
 {
-  echo "Failed to Save.";
+  die("Failed");
 }
-
-exit();
 
 function add_list($db,$arr_input)
 {
