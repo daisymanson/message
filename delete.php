@@ -4,30 +4,31 @@ require_once('class_db_maria.php');
 $db = new DB;
 
 $arr_def['id'] = $_GET['id'];
+$sql_def['id'] = $arr_def['id'];
 
+$result = checke_data($db, $sql_def);
 $arr_inpt['is_enable'] = 1;
-
-$result = checke_data($db, $arr_def);
 
 if(is_array($result) == ture)
 {
-  delete_list($db, $arr_inpt, $arr_def);
+  $db->debug();
+  delete_list($db, $arr_inpt, $sql_def);
+  unset($sql_def);
+  redirect_js_href('success', 'index.php');
 }
 else
 {
-  var_dump($result);
+  die("Failed");
 }
 
-unset($arr_def);
 unset($arr_inpt);
-unset($result);
 
 function delete_list($db, $arr_inpt, $arr_def)
 {
 	$res = $db->table('message')
 					  ->update($arr_inpt)
 					  ->where('id = ? ', $arr_def)
-					  ->get();
+					  ->set();
 	return $res;
 }
 
@@ -38,5 +39,21 @@ function checke_data($db, $arr_def)
                ->where('id = ?', $arr_def)
                ->get();
   return $result;
+}
+
+function redirect_js_href($msg,$url)
+{
+  if($url == NULL)
+  {
+    $url = 'index.php';
+  }
+
+  echo '<script>';
+  if($msg)
+  {
+    echo "alert('".$msg."');";
+  }
+  echo 'window.location.href="'.$url.'";';
+  echo '</script>';
 }
 ?>
