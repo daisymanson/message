@@ -38,6 +38,9 @@ unset($arr_input);
   <?php
   if(is_array($result) == true)
   {
+    ?>
+    <button onclick="location.href='index.html';">新增</button>
+    <?php
     foreach ($result as $key => $value1)
     {
       ?>
@@ -48,11 +51,18 @@ unset($arr_input);
         <td><?php echo $value1['date'];?></td>
         <td>
           <button onclick="update_list(<?php echo $value1['id'];?>)">修改</button>
-          <button onclick="delete_list()">刪除</button>
+          <button onclick="delete_list(<?php echo $value1['id'];?>)">刪除</button>
         </td>
       </tr>
       <?php
     }
+  }
+  else
+  {
+    ?>
+    <td colspan="5"><?php echo "目前暫無資料";?></td>
+    <button onclick="location.href='index.html';">新增</button>
+    <?php
   }
   ?>
 </table>
@@ -62,7 +72,7 @@ function get_list($db, $arr_input)
 {
   $result = $db->table('message')
                ->select('*')
-               ->where('is_enable = 0', $arr_input)
+               ->where('is_enable = 0')
                ->get();
   return $result;
 }
@@ -77,6 +87,7 @@ function update_list(id)
 
 function delete_list(id)
 {
-  window.parent.location.href='delete.php';
+  alert('are you sure to delete?');
+  window.parent.location.href='delete.php?id=' + id;
 }
 </script>
