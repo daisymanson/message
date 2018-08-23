@@ -17,7 +17,7 @@ $res = add_list($db, $sql_input);
 
 if($res != '')
 {
-  redirect_js_href('Success', 'index.php');
+  redirect_js_href('success', 'index.php');
 }
 else
 {
