@@ -8,8 +8,9 @@
   <?php echo $_GET['id']; ?>
   <br>
   Content
-  <input type="text" name="content">
-  <input type="submit" value="Submit">
+  <input type="text" name="content"></input>
+  <input type="submit" value="Submit"></input>
+  <input type ="button" onclick="history.back()" value="Cancel"></input>
 </form>
 </html>
 
