@@ -1,3 +1,7 @@
+<?php
+require_once('class_db_maria.php');
+$db = new DB;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +21,6 @@
 </html>
 
 <?php
-require_once('class_db_maria.php');
-$db = new DB;
-
 $result = get_list($db, $arr_input);
 
 unset($arr_input);

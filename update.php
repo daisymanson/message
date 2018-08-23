@@ -8,7 +8,6 @@ $arr_input['content'] = $_POST['content'];
 $sql_input['id'] = $arr_input['id'];
 $res = get_list($db, $sql_input);
 unset($sql_input);
-
 ?>
 <!DOCTYPE html>
 <html>
