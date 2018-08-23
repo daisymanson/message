@@ -7,21 +7,27 @@ $arr_def['id'] = $_GET['id'];
 $sql_def['id'] = $arr_def['id'];
 
 $result = checke_data($db, $sql_def);
-$arr_inpt['is_enable'] = 1;
+unset($sql_def);
 
 if(is_array($result) == ture)
 {
-  $db->debug();
+  $sql_def['id'] = $arr_def['id'];
+  $arr_inpt['is_enable'] = 1;
+
   delete_list($db, $arr_inpt, $sql_def);
+
   unset($sql_def);
+  unset($arr_inpt);
+
   redirect_js_href('success', 'index.php');
 }
 else
 {
   die("Failed");
 }
+exit;
 
-unset($arr_inpt);
+
 
 function delete_list($db, $arr_inpt, $arr_def)
 {
