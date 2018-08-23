@@ -11,12 +11,11 @@ if(is_array($arr_input) == ture)
   $array_input['content'] = $arr_input['content'];
   $array_defult['id'] = $arr_input['id'];
   mod_list($db, $array_input, $array_defult);
+  unset($array_input);
+  unset($array_defult);
   redirect_js_href('success', 'index.php');
 }
-
-unset($arr_input);
-unset($array_input);
-unset($array_defult);
+exit;
 
 function mod_list($db,$array_input, $array_defult)
 {
