@@ -24,9 +24,6 @@ get_list($db, $arr_input);
 $array_input['content'] = $_POST['content'];
 $array_defult['id'] = $arr_input['id'];
 
-print_r($array_input['content']);
-$db->debug();
-
 mod_list($db, $array_input, $array_defult);
 
 function get_list($db, $arr_input)
