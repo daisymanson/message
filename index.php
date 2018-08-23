@@ -20,7 +20,7 @@
 require_once('class_db_maria.php');
 $db = new DB;
 
-$result = select_list($db, $arr_input);
+$result = get_list($db, $arr_input);
 
 unset($arr_input);
 
@@ -47,7 +47,7 @@ unset($arr_input);
         <td><?php echo $value1['content'];?></td>
         <td><?php echo $value1['date'];?></td>
         <td>
-          <button onclick="update_list()">修改</button>
+          <button onclick="update_list(<?php echo $value1['id'];?>)">修改</button>
           <button onclick="delete_list()">刪除</button>
         </td>
       </tr>
@@ -58,10 +58,10 @@ unset($arr_input);
 </table>
 
 <?php
-function select_list($db, $arr_input)
+function get_list($db, $arr_input)
 {
   $result = $db->table('message')
-               ->select('guest_id, content, date')
+               ->select('*')
                ->where('is_enable = 0', $arr_input)
                ->get();
   return $result;
@@ -70,12 +70,12 @@ function select_list($db, $arr_input)
 unset($arr_input);
 ?>
 <script>
-function update_list()
+function update_list(id)
 {
-  window.parent.location.href='update.php';
+  window.parent.location.href='update.php?id=' + id;
 }
 
-function delete_list()
+function delete_list(id)
 {
   window.parent.location.href='delete.php';
 }
