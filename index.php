@@ -76,8 +76,6 @@ function get_list($db, $arr_input)
                ->get();
   return $result;
 }
-
-unset($arr_input);
 ?>
 <script>
 function update_list(id)
