@@ -17,6 +17,10 @@ else
   var_dump($result);
 }
 
+unset($arr_def);
+unset($arr_inpt);
+unset($result);
+
 function delete_list($db, $arr_inpt, $arr_def)
 {
 	$res = $db->table('message')

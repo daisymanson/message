@@ -27,6 +27,10 @@ $array_defult['id'] = $arr_input['id'];
 
 mod_list($db, $array_input, $array_defult);
 
+unset($arr_input);
+unset($array_defult);
+unset($array_input);
+
 function get_list($db, $arr_input)
 {
 	$result = $db->table("message")
@@ -44,21 +48,4 @@ function mod_list($db,$array_input, $array_defult)
 					  ->get();
 	return $res;
 }
-
-// function redirect_js_href($msg,$url)
-// {
-//   if($url == NULL)
-//   {
-//     $url = 'index.php';
-//   }
-//
-//   echo '<script>';
-//   if($msg)
-//   {
-//     echo "alert('".$msg."');";
-//   }
-//   echo 'window.location.href="'.$url.'";';
-//   echo '</script>';
-// }
-
 ?>
